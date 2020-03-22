@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_US
 %===================================================================================
 
 %===================================================================================
@@ -14,6 +15,7 @@
 \usepackage{informe}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
+\usepackage{algorithmic}
 \usepackage[pdftex]{hyperref}
 %-----------------------------------------------------------------------------------
 % Configuración
@@ -33,31 +35,27 @@
 %-----------------------------------------------------------------------------------
 % Título
 %-----------------------------------------------------------------------------------
-\title{Documento de Ejemplo para la Jornada Científica Estudiantil}
+\title{Simulaci\'on basada en Eventos Discretos}
 
 %-----------------------------------------------------------------------------------
 % Autores
 %-----------------------------------------------------------------------------------
 \author{\\
-\name Autor Uno \email \href{mailto:a.uno@lab.matcom.uh.cu}{a.uno@lab.matcom.uh.cu}
-	\\ \addr Grupo B612 \AND
-\name Autor Dos \email \href{mailto:a.dos@lab.matcom.uh.cu}{a.dos@lab.matcom.uh.cu}
-  \\ \addr Grupo B612}
+\name Carlos Rafael Ortega Lezcano \email \href{mailto:c.ortega@estudiantes.matcom.uh.cu}{c.ortega@estudiantes.matcom.uh.cu}
+	\\ \addr Grupo C411}
 
 %-----------------------------------------------------------------------------------
 % Tutores
 %-----------------------------------------------------------------------------------
-\tutors{\\
-Dr. Tutor Uno, \emph{Centro} \\
-Lic. Tutor Dos, \emph{Centro}}
+\tutors{\\}
 
 %-----------------------------------------------------------------------------------
 % Headings
 %-----------------------------------------------------------------------------------
-\jcematcomheading{\the\year}{1-\pageref{end}}{A. Uno, A. Dos}
+%\jcematcomheading{\the\year}{1-\pageref{end}}{Carlos Rafael}
 
 %-----------------------------------------------------------------------------------
-\ShortHeadings{Ejemplo JCE}{Autores}
+%\ShortHeadings{Simulacio\'n basada en Eventos Discretos}{Carlos Rafael}
 %===================================================================================
 
 
@@ -83,40 +81,40 @@ Lic. Tutor Dos, \emph{Centro}}
 %-----------------------------------------------------------------------------------
 % Resumen en Español
 %-----------------------------------------------------------------------------------
-\begin{abstract}
+%\begin{abstract}
 
-	El Resumen en Español debe constar de $100$ a $200$ palabras y presentar de forma
-	clara y concisa el contenido fundamental del artículo.
+%	El Resumen en Español debe constar de $100$ a $200$ palabras y presentar de forma
+%	clara y concisa el contenido fundamental del artículo.
 
-\end{abstract}
+%\end{abstract}
 
 %-----------------------------------------------------------------------------------
 % English Abstract
 %-----------------------------------------------------------------------------------
 \vspace{0.5cm}
 
-\begin{enabstract}
+%\begin{enabstract}
 
-  The English Abstract must have have $100$ to $200$ words, and present in a clear
-  and concise form the essentials of the article content.
+%  The English Abstract must have have $100$ to $200$ words, and present in a clear
+%  and concise form the essentials of the article content.
 
-\end{enabstract}
+%\end{enabstract}
 
 %-----------------------------------------------------------------------------------
 % Palabras clave
 %-----------------------------------------------------------------------------------
-\begin{keywords}
-	Separadas,
-	Por,
-	Comas.
-\end{keywords}
+%\begin{keywords}
+%	Separadas,
+%	Por,
+%	Comas.
+%\end{keywords}
 
 %-----------------------------------------------------------------------------------
 % Temas
 %-----------------------------------------------------------------------------------
-\begin{topics}
-	Tema, Subtema.
-\end{topics}
+%\begin{topics}
+%	Tema, Subtema.
+%\end{topics}
 
 
 %-----------------------------------------------------------------------------------
@@ -132,110 +130,191 @@ Lic. Tutor Dos, \emph{Centro}}
 %===================================================================================
 % Introducción
 %-----------------------------------------------------------------------------------
-\section{Introducción}\label{sec:intro}
+\section{Problema Asignado}\label{sec:intro}
 %-----------------------------------------------------------------------------------
-  En esta sección puede incluir una presentación del dominio de su problema,
-  los objetivos y motivaciones fundamentales de su investigación así como un
-  resumen del estado del arte al respecto.
+
+En el Aeropuerto de Barajas, se desea conocer cu\'anto tiempo se encuentran vac\'ias
+las pistas de aterrizaje dedicadas a aviones de carga y que se consideran que una pista
+est\'a ocupada cuando hay un avi\'on aterrizando, despegando o cuando se encuentra cargando 
+o descargando mercanc\'ia o el abordaje o aterrizaje de cada pasajero. \\
+Se cononce que el tiempo cada avi\'on que arriba al aeropuerto distribuye, mediante una funci\'on
+de distribuci\'on exponencial con $\lambda = 20$ minutos. \\
+Si un avi\'on arriba al aeropuerto y no exiten pistas vac\'ias, se mantiene esperando hasta que se 
+vac\'ie una de ellas (en caso de que existan varios aviones en esta situaci\'on, pues se establece una suerte
+de cola para su aterrizaje). \\
+Se conoce adem\'as que el tiempo de carga y descarga de un avi\'on distribuye mediante una funci\'on de 
+distribuci\'on exponencial con $\lambda = 30$ minutos. Se considera adem\'as que el tiempo de aterrizaje y despegue de
+un avi\'on distribuye normal $N(10,5)$ y la probabilidad de que un avi\'on cargue y/o descargue en cada viaje corresponde a una distribuci\'on
+uniforme. \\
+Adem\'as de esto se conoce que los aviones tienen una probabilidad de tener una rotura de $0.1$. As\'i, cuando un avi\'on posee alguna rotura debe
+ser reparado en un tiempo que distribuye exponencial con $\lambda = 15$ minutos. Las roturas se identifican justo antes del despegue del avi\'on.\\
+Igualmente cada avi\'on, durante el tiempo que est\'a en la pista debe recargar combustible, mediante una distribuci\'on exponencial con $\lambda = 30$
+minutos y comienza justamente cuando el avi\'on aterriza.\\
+Se asume adem\'as qu los aviones pueden aterrizar en cada pista sin ninguna preferencia o requerimiento. \\
+Se desea simular el comportamiento del aeropuerto por una semana para estimar el tiempo total en que se encuentran vac\'ia cada una de las pistas del
+aeropuerto.
 
 %===================================================================================
-
-
 
 %===================================================================================
 % Desarrollo
 %-----------------------------------------------------------------------------------
-\section{Desarrollo}\label{sec:dev}
+\section{Principales Ideas}\label{sec:dev}
 %-----------------------------------------------------------------------------------
-  En esta sección (o secciones) incluya el contenido fundamental del artículo.
-  No es necesario tener una sección nombrada \emph{Desarrollo}, por el contrario,
-  nombre las secciones según el contenido que tratan.
+  
+El problema corresponde un acercamiento a un sistema compuesto por clientes (aviones)
+los cuales son atendidos por distintos servidores que funcionan en paralelo (pistas)
+pudiendo encontrarse clientes que deban esperar para ser atentidos en el sistema.
+En nuestro caso la cantidad de servidores que funcionan en paralelo es $n = 5$. \\
+
+Como consideraciones adicionales podemos observar que el tiempo de estancia en una pista
+es determinado por la combinaci\'on de distintas variables, adem\'as para conocer el tiempo
+total para cada pista es necesario conocer el instante en que un avi\'on entra en una pista
+y el instante en que abandona esta.
 
 %-----------------------------------------------------------------------------------
-	\subsection{Organización del Documento}\label{sub:results}
+	\subsection{Variables de la Simulaci\'on}\label{sub:results}
 %-----------------------------------------------------------------------------------
-		Puede agregar secciones y subsecciones según sea necesario para organizar
-		de manera más coherente su artículo. Tenga en cuenta que un documento más
-		plano es más fácil de navegar y entender, pero las subsecciones relacionadas
-		deberían estar agrupadas en una sección común.
+	Las variables empleadas para el proceso de simulaci\'on del problema son las 
+	siguientes, los aviones se identifican por un valor $Id$ el cual se asigna a cada 
+	avi\'on que arriva al aeropuerto de forma tal que $Id$ = $N_{A}$:
 
-		Los nombres de las secciones deben ir en mayúsculas, excepto para las
-		preposiciones, conjunciones, y otros vocablos auxiliares.
+	\begin{description}
+		\item \textbf{Variable de Tiempo} ($t$): Describe el tiempo transcurrido hasta el momento en la simulaci\'on
+		\item \textbf{Variable Contadora} ($N_{A}$): Describe la cantidad de aviones que han arribado al aeropuerto hasta el instante $t$
+		\item \textbf{Variables de Estado}:
+		\begin{description}
+			\item $SS$: Contiene la informaci\'on del avi\'on que se encuentra en la pista $i$, $i = 1,2,3,4,5$
+			\item $Q$: Contiene los aviones que esperan para poder aterrizar en una pista del aeropuerto 	
+		\end{description}
+		\item \textbf{Variables de Salida}:
+		\begin{description}
+			\item $A$: Contiene para cada pista $i$, $i = 1,2,3,4,5$, los tiempos en que cada avi\'on aterriza en la pista
+			\item $D$: Contiene para cada pista $i$, $i = 1,2,3,4,5$, los tiempos de salida para cada avi\'on que estuvo en la pista 	
+		\end{description}
+		\item \textbf{Lista de Eventos}:
+		\begin{description}
+			\item $t_{A}$: Representa el tiempo de arribo de un nuevo avi\'on al aeropuerto
+			\item $t_{D}$: Almacena para cada pista $i$, el tiempo de partida del avi\'on que se encuentra en esta
+		\end{description}
+	\end{description}
+	
+	La variable $T$ representa el tiempo limite para la simulaci\'on y se pasa como entrada al programa.
+	Se desea conocer el tiempo que cada pista permanece vac\'ia este tiempo es aquel que ocurre desde la salida de
+	un avi\'on a la pista hasta que otro arriba a esta por lo tanto si $A$ son los tiempos de entrada a la pista
+	para los aviones que estuvieron en esta y $D$ los tiempos de salida, el tiempo que una pista permanece vac\'ia
+	puede determinarce como:
 
-		Empiece un nuevo párrafo cada vez que vaya a comenzar una idea nueva.
+	\begin{align*}
+		E = A[0] + \sum_{i=1}^{l}(A[i] - D[i-1])  
+	\end{align*}
+
+	Donde $l$ es el largo de $A$, $A[0]$ el tiempo que se espera hasta que arriba el primer avi\'on, y 
+	la diferencia $A[i] - D[i-1]$ el tiempo que transcurre entre la salida del avi\'on $i-1$ hasta la llegada
+	del $i$ a la pista.
 
 %-----------------------------------------------------------------------------------
-	\subsection{Listas y Descripciones}\label{sub:lists}
+	\subsection{Variables Aleatorias presentes en la Simulaci\'on}\label{sub:lists}
 %-----------------------------------------------------------------------------------
-		Para producir listas enumeradas, use el siguiente estilo:
-
-%-----------------------------------------------------------------------------------
+		
+		El comportamiento del tiempo de llegada y de estancia de los aviones viene dado
+		por un conjunto de diversas variables aleatorias.
+		
 		\begin{enumerate}
-			\item Primer Elemento
-			\item Segundo Elemento
-			%
-			\begin {enumerate}
-				\item {Segundo Elemento - Subitem Uno}
-				\item {Segundo Elemento - Subitem Dos}
-			\end {enumerate}
-			%
+			\item Tiempo de arribo de un avi\'on al aeropuerto: $T_{0} \sim  Exp(20)$
+			\item Tiempo de carga y descarga: $T_{cd} \sim Exp(30)$
+			\item Tiempo de aterrizaje y despegue: $T_{ad} \sim N(10,5)$
+			\item Probabilidad de Ruptura $P(R) = 0.1$, Tiempo de Reparaci\'on $T_{r} \sim Exp(15)$
+			\item Tiempo de Recargar Combustible $T_{c} \sim Exp(30)$ 
 		\end{enumerate}
 
-%-----------------------------------------------------------------------------------
-		Para producir descripciones, use el siguiente estilo:
+		Para generar una variable aleatoria exponencial para poder describir el comportamiento de los diversos sucesos se emplea el m\'etodo de la inversa:
+		
+		\begin{algorithmic}[1]
+			\STATE Generar un n\'umero aleatorio $U$
+			\STATE Hacer $X = - \dfrac{1}{\lambda} log(U)$ 
+			\STATE Retornar $X$
+		\end{algorithmic}
+
+		En el caso de la variable normal primero se genera $Y \sim N(0,1)$ y luego se aplica: $X = \mu + Y\sigma$. Finalmente para determinar si un avi\'on sufrir\'a una ruptura o no se emplea:
+		
+		\begin{align*}
+			p\left(X = x_{j}\right) = p\left(\sum_{i=0}^{j-1} p_{i} \leq U < \sum_{i=0}^{j}p_{i} \right) = p_{j}
+		\end{align*}
+
+		Donde $U$ distribuye uniforme de 0 a 1. 
+
 
 %-----------------------------------------------------------------------------------
-		\begin{description}
-			\item [Primer Elemento] con su respectiva descripción.
-			\item [Segundo Elemento] también con su respectiva descripción.
-		\end{description}
+	\subsection{Simulaci\'on}\label{sub:figures}
+%-----------------------------------------------------------------------------------
+		
+		Dadas las variables de la simulaci\'on procedemos a realizar el proceso generando la llegada de los aviones y determinando cuanto tiempo pasaran en la pista.
+		
+		\newpage
+		
+		\textbf{Inicializaci\'on}
+		\begin{enumerate}
+			\item[] $t = N_{A} = 0$
+			\item[] $Q = \{\}$
+			\item[] $SS = \{i: 0\}$
+			\item[] $A = \{i: \text{[ ]}\}, D = \{i: \text{[ ]}\}$
+			\item[] Generar $T_{0} \sim Exp(20)$ y hacer $t_{A} = T_{0}$, $t_{D} = \{i: \infty\}$
+		\end{enumerate}
 
+		\textbf{Caso 1} $ t_{A} = \min{( t_{A}, t_{D}[i] )}, i = \overline{1,5}$
+		
+		\begin{enumerate}
+			\item[] $t = t_{A}$
+			\item[] $N_{A} = N_{A} + 1$
+			\item[] Generar $T_{t} \sim Exp(20)$ hacer $t_{A} = t + T_{t}$
+			
+			\textbf{IF} $\exists i \; | \; SS[i] = 0$, $i = \overline{1,5}$
+				\begin{enumerate}
+					\item[] $A[i] \leftarrow t$
+					\item[] $SS[i] = N_{A}$
+					\item[] Generar $Y = Depart()$ hacer $t_{D}[i] = t + Y$ 
+				\end{enumerate}
+			
+			\textbf{IF} $SS[i] \neq 0$, $\forall i = \overline{1,5}$
+			\begin{enumerate}
+				\item[] $Q \leftarrow N_{A}$ 
+			\end{enumerate}
+		\end{enumerate}
+	
+		\textbf{Caso 2} $ t_{j} = \min{( t_{A}, t_{D}[i] )} \wedge t_{j} \neq t_{A}, i = \overline{1,5}$
+		
+		\begin{enumerate}
+			\item[] $t_{j} = \min(t_{D})$
+			\item[] $t = t_{j}$
+			\item[] $D[j] \leftarrow t$
+			\item[] $SS[i] = 0$
+			
+			\textbf{IF} $Q \neq \{\}$
+				\begin{enumerate}
+					\item[] $nxt = Q.pop()$
+					\item[] $A[i] \leftarrow t$
+					\item[] $SS[i] = nxt$
+					\item[] Generar $Y = Depart()$ hacer $t_{D}[i] = t + Y$ 
+				\end{enumerate} 
+		\end{enumerate}
+		
+		\textbf{Caso 3} $ \min{( t_{A}, t, t_{D}[i] )} > T, i = \overline{1,5}$: Terminar la simulaci\'on
+		
 %-----------------------------------------------------------------------------------
-	\subsection{Figuras}\label{sub:figures}
+\section{Modelo}\label{sub:listings}
 %-----------------------------------------------------------------------------------
-		Para producir cuerpos flotantes (figuras ó tablas), asegúrese de numerar
-		y etiquetar correctamente cada figura. Las referencias a las figuras deben
-		estar también correctamente etiquetadas. Por ejemplo, en la Fig. \ref{fig:ex}
-		se muestra\ldots.
 
 		\begin{figure}[htb]%
-		\begin{center}
-			\emph{Aquí va el contenido de la figura \ldots}
-		\end{center}
-		\caption{Figura de ejemplo \label{fig:ex}}%
+			\begin{center}
+				\emph{Aquí va el contenido de la figura \ldots}
+			\end{center}
+			\caption{Figura de ejemplo \label{fig:ex}}%
 		\end{figure}
 
 %-----------------------------------------------------------------------------------
-	\subsection{Código Fuente}\label{sub:listings}
+\section{Consideraciones}
 %-----------------------------------------------------------------------------------
-		Para producir código fuente, envuélvalo en una figura flotante y
-		etiquételo correctamente. Por ejemplo, en la Fig. \ref{fig:code}
-		se muestra un código bastante conocido\ldots.
-
-		% Configuración de Listings
-		\lstset{keywordstyle=\color{blue}, basicstyle=\small}
-
-		\begin{figure}[htb]%
-			\begin{lstlisting}[language=c]%
-
-    int main(int argc, char** argv)
-    {
-        // Imprimiendo "Hola Mundo".
-        printf("Hello, World");
-    }
-
-			\end{lstlisting}
-		\caption{Código fuente de ejemplo.\label{fig:code}}
-		\end{figure}
-
-%-----------------------------------------------------------------------------------
-	\subsection{Referencias}
-%-----------------------------------------------------------------------------------
-  	Las referencias deben estar agrupadas en una sección al final del artículo,
-  	y las citas numeradas correctamente, por ejemplo \cite{knuth} ó \cite{goedel}.
-  	Incluya toda la información importante de cada referencia, incluídos autor,
-  	título, y notas de la edición. En caso de citar sitios web, además
-  	de la URL, incluya la fecha en que fue consultado, como en \cite{wiki}.
 
 %===================================================================================
 
@@ -244,26 +323,9 @@ Lic. Tutor Dos, \emph{Centro}}
 %===================================================================================
 % Conclusiones
 %-----------------------------------------------------------------------------------
-\section{Conclusiones}\label{sec:conc}
-
-  En esta sección puede incluir las conclusiones de su investigación y las ideas
-  sobre la continuidad del trabajo, en el caso que aplique.
+\section{Repositorio}\label{sec:conc}
 
 %===================================================================================
-
-
-
-%===================================================================================
-% Recomendaciones
-%-----------------------------------------------------------------------------------
-\section{Recomendaciones}\label{sec:rec}
-
-  En esta sección puede incluir recomendaciones sobre posibles formas de continuar
-  la investigación u otros temas relacionados.
-
-%===================================================================================
-
-
 
 %===================================================================================
 % Bibliografía

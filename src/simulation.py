@@ -8,7 +8,7 @@ var = 5
 # download / upload
 lb_down_up =  1 / 30
 # fix airplane
-rot = [(0, 0.9), (1,0.1)]
+rot = [(0, 0.9), (1, 0.1)]
 lb_fix = 1 / 15
 # reload
 lb_rel = 1 / 30
@@ -22,7 +22,7 @@ def simulate(T):
  
     # states
     SS = { i : 0 for i in range(5) } # empty system
-    n = 0
+    q = []
     
     # outputs (i - airplain)
     A = { i : [] for i in range(5) }
@@ -53,7 +53,7 @@ def simulate(T):
                     break
             
             if queue:
-                n += 1
+                q.append(na)
         else:
             t = min(td.values())
             idx = -1
@@ -66,11 +66,10 @@ def simulate(T):
             SS[i] = 0
 
             # dequeue
-            if n > 0:
-                n -= 1
-                na += 1
+            if len(q) > 0:
+                nxt = q.pop(-1)
                 A[i].append(t)
-                SS[i] = na
+                SS[i] = nxt
                 y = departure()
                 td[i] = y + t
 
@@ -95,7 +94,7 @@ def departure():
     t_fix = exponential(lb_fix) * inverse_method(rot)
     t_down_up = exponential(lb_down_up)
 
-    return common + min(t_reload, t_fix + t_down_up)
+    return common + t_fix + max(t_reload, t_down_up)
 
 if __name__ == "__main__":
     T = 10080

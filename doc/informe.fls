@@ -1,10 +1,10 @@
-PWD /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc
+PWD /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.tex
-OUTPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.log
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.tex
+OUTPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
@@ -23,8 +23,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.sty
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.sty
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.sty
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
@@ -85,9 +85,9 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.aux
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.aux
-OUTPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.aux
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.aux
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.aux
+OUTPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.aux
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 INPUT /usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
@@ -104,14 +104,14 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-OUTPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.pdf
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-OUTPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+OUTPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.pdf
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+OUTPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
 INPUT /usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
@@ -140,24 +140,33 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.aux
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
-INPUT /home/carlos/Documents/UH/Simulacion/Aeropuerto Barajas/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.aux
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
+INPUT /home/carlos/Documents/UH/Simulacion/simulation-discrete-events/doc/informe.out
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb

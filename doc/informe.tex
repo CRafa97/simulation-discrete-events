@@ -1,6 +1,3 @@
-% !TeX spellcheck = en_US
-%===================================================================================
-
 %===================================================================================
 % PREÁMBULO
 %-----------------------------------------------------------------------------------
@@ -258,8 +255,9 @@ y el instante en que abandona esta.
 			\item[] $t = N_{A} = 0$
 			\item[] $Q = \{\}$
 			\item[] $SS = \{i: 0\}$
-			\item[] $A = \{i: \text{[ ]}\}, D = \{i: \text{[ ]}\}$
-			\item[] Generar $T_{0} \sim Exp(20)$ y hacer $t_{A} = T_{0}$, $t_{D} = \{i: \infty\}$
+			\item[] $A = \{i: \text{[ ]}\}, \;\; D = \{i: \text{[ ]}\}$
+			\item[] Generar $T_{0} \sim Exp(20)$ y hacer $t_{A} = T_{0}$
+			\item[] $t_{D} = \{i: \infty\}$
 		\end{enumerate}
 
 		\textbf{Caso 1} $ t_{A} = \min{( t_{A}, t_{D}[i] )}, i = \overline{1,5}$
@@ -299,17 +297,39 @@ y el instante en que abandona esta.
 				\end{enumerate} 
 		\end{enumerate}
 		
-		\textbf{Caso 3} $ \min{( t_{A}, t, t_{D}[i] )} > T, i = \overline{1,5}$: Terminar la simulaci\'on
+		\textbf{Caso 3} $ \min{( t_{A}, t, t_{D}[i] )} > T, i = \overline{1,5}$
+		
+		\begin{enumerate}
+			\item[] Terminar la simulaci\'on 
+		\end{enumerate}
+		
+		Para generar el tiempo que pasa un avi\'on en la pista se emplea $Depart$ que realiza las siguientes operaciones:\\
+		
+		\textbf{Depart}:
+		\begin{enumerate}
+			\item[] Generar $A \sim N(10,5)$ tiempo de aterrizaje
+			\item[] Generar $D \sim N(10,5)$ tiempo de despegue
+			\item[] Determinar si habr\'a rotura generando $U \sim U(0,1)$ y generar $F \sim Exp(15)$ hacer $F = F * U$
+			\item[] Generar $R \sim Exp(30)$ tiempo de recarga de combustible
+			\item[] Generar $C \sim Exp(30)$ tiempo de carga/descarga
+			\item[] Hacer $M = \max{(R, C)}$
+			\item[] Retornar $A + D + F + M$, tiempo de estancia en la pista
+		\end{enumerate}
 		
 %-----------------------------------------------------------------------------------
 \section{Modelo}\label{sub:listings}
 %-----------------------------------------------------------------------------------
-
+		
+		La figura muestra un modelo de cliente-servidor con 5 servidores en paralelo.
+		Un cliente arriba al sistema, si el sistema se encuentra lleno se encola al
+		cliente, al existir un servidor vac\'io entonces se pasa al cliente, una vez
+		que se realizan todas las operaciones correspondientes el cliente abandona el
+		sistema
+		
 		\begin{figure}[htb]%
 			\begin{center}
-				\emph{Aquí va el contenido de la figura \ldots}
+				%\includegraphics{}
 			\end{center}
-			\caption{Figura de ejemplo \label{fig:ex}}%
 		\end{figure}
 
 %-----------------------------------------------------------------------------------
@@ -317,8 +337,43 @@ y el instante en que abandona esta.
 %-----------------------------------------------------------------------------------
 
 %===================================================================================
+	
+	Una corrida de ejemplo de la simulaci\'on para una 
+	se-mana (10080 minutos) muestra los siguientes resultados:
+	\begin{center}
+		\begin{tabular}[t]{|c|c|}
+			\hline
+			Pistas & Tiempo (minutos) \\ \hline
+			Pista 1 & 935 \\ \hline
+			Pista 2 & 1845 \\ \hline
+			Pista 3 & 1533 \\ \hline
+			Pista 4 & 2348 \\ \hline
+			Pista 5 & 3000 \\ \hline
+		\end{tabular}
+	\end{center}
 
+	Como los aviones no tienen preferencia por determinadas pistas adem\'as de que
+	no existen requisitos para aterrizar en una pista, entonces se selecciona la primera
+	pista que se encuentra vac\'ia debido a esto podemos observar como los tiempos de las
+	pistas 4 y 5 son mayores, mientras la pista 1 es la que menos tiempo permanece libre.\\
 
+	Para la selecci\'on de la pista se realiz\'o una corrida donde se selecciona de forma
+	aleatoria la pista de aterrizaje resultando:
+	\begin{center}
+		\begin{tabular}[t]{|c|c|}
+			\hline
+			Pistas & Tiempo (minutos) \\ \hline
+			Pista 1 & 2118 \\ \hline
+			Pista 2 & 1775 \\ \hline
+			Pista 3 & 2134 \\ \hline
+			Pista 4 & 2508 \\ \hline
+			Pista 5 & 2039 \\ \hline
+		\end{tabular}
+	\end{center}
+
+	En este caso los tiempos son m\'as igualados ya que las primeras pistas no siempre
+	reciben a un avi\'on que arriba o estaba en cola sino que la repartici\'on es aleatoria
+	entre las pistas que est\'an libres.
 
 %===================================================================================
 % Conclusiones
@@ -332,17 +387,13 @@ y el instante en que abandona esta.
 %-----------------------------------------------------------------------------------
 \begin{thebibliography}{99}
 %-----------------------------------------------------------------------------------
-	\bibitem{knuth} Donald E. Knuth. \emph{The Art of Computer Programming}.
-		Volume 1: Fundamental Algorithms (3rd~edition), 1997.
-		Addison-Wesley Professional.
-
-	\bibitem{goedel} Kurt Göedel. \emph{Über formal unentscheidbare Sätze der
-		Principia Mathematica und verwandter Systeme, I}.
-		Monatshefte für Mathematik und Physik 38.
-
-	\bibitem{wiki} Wikipedia. URL: \href{http://en.wikipedia.org}
-	  {http://en.wikipedia.org}.
-		Consultado en \today.
+	\bibitem{ross} Ross, Sheldon M. \emph{Simulation}.
+		(5th~edition), 2013.
+		Elsevier.
+		
+	\bibitem{rossprob} Ross, Sheldon M. \emph{A First Course in Probability}.
+		(9th~edition), 2014.
+		Pearson Education
 
 %-----------------------------------------------------------------------------------
 \end{thebibliography}

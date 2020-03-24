@@ -25,7 +25,7 @@ def simulate(T, rnd = False):
     SS = { i : 0 for i in range(5) } # empty system
     q = []
     
-    # outputs (i - airplain)
+    # outputs
     A = { i : [] for i in range(5) }
     D = { i : [] for i in range(5) }
 

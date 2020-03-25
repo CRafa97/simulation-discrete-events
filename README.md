@@ -1,5 +1,7 @@
 # Simulacion basada en Eventos Discretos
 
+### Nombre: Carlos Rafael Ortega Lezcano C411
+
 ### __Problema__: Aeropuerto de Barajas
 
 #### Especificaciones:
